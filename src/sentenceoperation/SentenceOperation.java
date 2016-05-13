@@ -1,6 +1,6 @@
 package sentenceoperation;
 
-import com.sun.xml.internal.fastinfoset.util.CharArray;
+
 
 import java.util.LinkedHashMap;
 import java.util.Map;
@@ -34,9 +34,7 @@ public class SentenceOperation {
     }
   public String mostCommonChar(String sentence){
     String charecter = "";
-//    String stringwithnospaces=sentence.replaceAll("[ \\t\\n\\x0B\\f\\r]","");
     Integer charcount=0;
-//    System.out.println(stringwithnospaces);
     char[] sentenceasarray=sentence.replaceAll(" +","").toCharArray();
     LinkedHashMap<Character,Integer> lettercount=new LinkedHashMap();
     for(int j=0;j<sentenceasarray.length;j++) {
