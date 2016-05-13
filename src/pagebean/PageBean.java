@@ -1,71 +1,65 @@
 package pagebean;
 
 import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 
 /**
  * Created by clouway on 10.05.16.
  */
 public class PageBean {
+  public Integer currentpage=0;
   private Integer pagesize;
-  private String content;
-  private Map<Integer, String> pages = new LinkedHashMap<>();
-  private Integer step = 0;
-  private Integer numberofpages;
-  private Integer key=0;
+  private List<Object> pages;
+  private Integer from=0;
+  private Integer to=0;
 
-  public PageBean(Integer pagesize, String content) {
+
+  public PageBean(Integer pagesize, List<Object> pages) {
     this.pagesize = pagesize;
-    this.content = content;
-    this.numberofpages = (content.length() / pagesize) + (content.length() % pagesize);
+    this.pages = pages;
   }
 
-  public void createPages() {
-    for (Integer i = 0; i < numberofpages; i++) {
-      String currentstring = "";
-      for (Integer j = 0; j < pagesize; j++) {
-        if (step == content.length()) {
-          break;
-        }
-        currentstring += content.charAt(step);
-        step++;
-      }
-      pages.put(i, currentstring);
-    }
-  }
+
   public String next(){
-    key++;
-    return "Page"+key+"\n"+pages.get(key-1);
+    currentpage+=1;
+    from=(currentpage-1)*pagesize;
+    to=(((currentpage-1)*pagesize)+1)+(pagesize-1);
+    if(to>pages.size()){
+      to=pages.size();
+    }
+    return pages.subList(from,to).toString();
   }
   public String previous(){
-    return "Page"+(key-1)+"\n"+pages.get((key-2));
+    currentpage-=2;
+    return next();
   }
-  public boolean hasPrevious(){
-    if(key>1){
+  public boolean hasNext()
+  {
+    if(to<pages.size()){
       return true;
     }
     return false;
   }
-  public boolean hasNext(){
-    if(key<numberofpages-1){
+  public boolean hasPrevious()
+  {
+    if(from>1){
       return true;
     }
     return false;
   }
   public String firstPage(){
-    key=1;
-    return "Page1\n"+pages.get(key-1);
+    currentpage=0;
+    return next();
   }
   public String lastPage(){
-    key=numberofpages-1;
-    return "Page"+(numberofpages)+"\n"+pages.get(numberofpages-1);
+    currentpage=pages.size()/pagesize;
+    return next();
   }
   public Integer getCurrentPageNumber(){
-    return key;
+    return currentpage;
   }
-
-
-
 
 }
 
