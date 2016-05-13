@@ -22,6 +22,9 @@ public class DemoPageBean {
     people.add(p3);
     people.add(p4);
     people.add(p5);
+    people.add(p6);
+    people.add(p7);
+    people.add(p8);
     Scanner sc = new Scanner(System.in);
     System.out.println("Enter number of elements on a page:");
     Integer numberofelementsonpage = sc.nextInt();
