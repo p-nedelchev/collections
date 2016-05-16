@@ -57,7 +57,7 @@ public class Sentence {
         charecter = String.valueOf(entry.getKey());
       }
     }
-    return "Most common char is '" + charecter + "' seen " + charcount + "  times.";
+    return charecter+" "+charcount;
   }
 }
 
