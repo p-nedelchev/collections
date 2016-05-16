@@ -39,12 +39,12 @@ public class DemoPageBean {
       }
       if (choise.equals("next")) {
         if (demo.hasNext()) {
-          System.out.println(demo.next());
+          demo.next();
         } else throw new NoNextPage();
       }
       if (choise.equals("previous")) {
         if (demo.hasPrevious()) {
-          System.out.println(demo.previous());
+          demo.previous();
         } else {
           throw new NoPreviousPage();
         }
@@ -52,10 +52,10 @@ public class DemoPageBean {
 
       }
       if (choise.equals("first")) {
-        System.out.println(demo.firstPage());
+        demo.firstPage();
       }
       if (choise.equals("last")) {
-        System.out.println(demo.lastPage());
+        demo.lastPage();
       }
 
       if (choise.equals("page")) {
@@ -69,8 +69,6 @@ public class DemoPageBean {
       }
     }
   }
-
-
 }
 
 

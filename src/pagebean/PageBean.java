@@ -1,9 +1,8 @@
 package pagebean;
 
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
+
 import java.util.List;
-import java.util.Map;
+
 
 /**
  * Created by clouway on 10.05.16.
@@ -20,11 +19,11 @@ public class PageBean {
 
 
   public String next() {
-    Integer from = 0;
-    Integer to = 0;
+    Integer from;
+    Integer to;
     currentpage += 1;
     from = (currentpage - 1) * pagesize;
-    to = (((currentpage - 1) * pagesize) + 1) + (pagesize - 1);
+    to = ((currentpage - 1) * pagesize)  + pagesize;
     if (to > pages.size()) {
       to = pages.size();
     }

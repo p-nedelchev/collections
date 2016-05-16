@@ -8,9 +8,13 @@ import java.util.Map;
 /**
  * @author Vasil Mitov (v.mitov.clouway@gmail.com)
  */
-public class SentenceOperation {
+public class Sentence {
+  private String sentence;
+  public  Sentence(String sentence){
+    this.sentence=sentence;
+  }
 
-  public String countWords(String sentence) {
+  public String wordsCount() {
     String[] words;
     LinkedHashMap<String, Integer> wordcount = new LinkedHashMap();
     words = sentence.split("\\s+");
@@ -32,7 +36,7 @@ public class SentenceOperation {
 
   }
 
-  public String mostCommonChar(String sentence) {
+  public String mostCommonChar() {
     String charecter = "";
     Integer charcount = 0;
     char[] sentenceasarray = sentence.replaceAll(" +", "").toCharArray();
@@ -51,7 +55,6 @@ public class SentenceOperation {
       if (entry.getValue() > charcount) {
         charcount = entry.getValue();
         charecter = String.valueOf(entry.getKey());
-
       }
     }
     return "Most common char is '" + charecter + "' seen " + charcount + "  times.";
