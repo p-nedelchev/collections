@@ -1,6 +1,7 @@
 package pagebean;
 
 
+import java.util.LinkedList;
 import java.util.List;
 
 
@@ -17,20 +18,19 @@ public class PageBean {
     this.pages = pages;
   }
 
-
-  public String next() {
+  public List<Object> next() {
     Integer from;
     Integer to;
     currentpage += 1;
     from = (currentpage - 1) * pagesize;
-    to = ((currentpage - 1) * pagesize)  + pagesize;
+    to = ((currentpage - 1) * pagesize) + pagesize;
     if (to > pages.size()) {
       to = pages.size();
     }
-    return pages.subList(from, to).toString();
+    return pages.subList(from, to);
   }
 
-  public String previous() {
+  public List<Object> previous() {
     currentpage -= 2;
     return next();
   }
@@ -49,12 +49,12 @@ public class PageBean {
     return false;
   }
 
-  public String firstPage() {
+  public List<Object> firstPage() {
     currentpage = 0;
     return next();
   }
 
-  public String lastPage() {
+  public List<Object> lastPage() {
     currentpage = pages.size() / pagesize;
     return next();
   }

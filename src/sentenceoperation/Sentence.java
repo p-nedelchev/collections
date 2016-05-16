@@ -10,8 +10,9 @@ import java.util.Map;
  */
 public class Sentence {
   private String sentence;
-  public  Sentence(String sentence){
-    this.sentence=sentence;
+
+  public Sentence(String sentence) {
+    this.sentence = sentence;
   }
 
   public String wordsCount() {
@@ -31,7 +32,6 @@ public class Sentence {
       }
       wordcount.put(currentword, counter);
     }
-
     return wordcount.toString().replaceAll("=", ": ").replaceAll("[\\{\\}]", "");
 
   }
@@ -57,7 +57,7 @@ public class Sentence {
         charecter = String.valueOf(entry.getKey());
       }
     }
-    return charecter+" "+charcount;
+    return charecter + " " + charcount;
   }
 }
 
