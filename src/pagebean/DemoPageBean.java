@@ -67,7 +67,6 @@ public class DemoPageBean {
       if (choise.equals("exit")) {
         break;
       }
-
     }
   }
 
