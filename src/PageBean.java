@@ -1,4 +1,3 @@
-import javax.swing.text.html.HTMLDocument;
 import java.util.*;
 
 /**
@@ -6,39 +5,54 @@ import java.util.*;
  */
 public class PageBean {
 
-
+    private int currentPage = 1;
     private int pageSize = 0;
     private List<String> lnklist;
-    private int offset = 0;
 
+//    private List<String> formula() {
+//        List<String> secondlist = new ArrayList<String>();
+//        int next = (currentPage - 1) * pageSize;
+//        int nextone = ((currentPage - 1) * pageSize) + pageSize;
+//        for (int i = next; i < nextone; i++) {
+//            // secondlist.add(lnklist.get(i));
+//        }
+//
+//        int previous = (currentPage - 1) / pageSize;
+//
+//        int previousone = ((currentPage - 1) / pageSize) + pageSize;
+//        return secondlist;
+//    }
 
-    public PageBean(List<String> lnklist, int pageSize, int offset) {
+    public PageBean(List<String> lnklist, int pageSize) {
         this.lnklist = lnklist;
         this.pageSize = pageSize;
-        this.offset = offset;
+
     }
 
-    public List<String> next(int page) {
-        List<String> secondlist = new ArrayList<String>();
-        if (((page - 1) * pageSize) + pageSize > lnklist.size()) {
-            lnklist.size();
+    public List<String> next() {
+        int next = (currentPage - 1) * pageSize;
+        int nextone = ((currentPage - 1) * pageSize) + pageSize;
+        currentPage += 1;
+        if (nextone > lnklist.size()) {
+            nextone = lnklist.size();
         }
-        for (int i = (page - 1) * pageSize; i < ((page - 1) * pageSize) + pageSize; i++) {
-            secondlist.add(lnklist.get(i));
-        }
-        return secondlist;
+        return lnklist.subList(next, nextone);
+
     }
 
-    public List<String> previous(int page) {
-        List<String> secondlist = new ArrayList<String>();
-        for (int i = (page - 1) / pageSize; i < ((page - 1) / pageSize) + pageSize; i++) {
-            secondlist.add(lnklist.get(i));
 
-        }
-        return secondlist;
+    public List<String> previous() throws NoPreviousPages {
+        int previous = (currentPage - 1) * pageSize - pageSize;
+        int previousone = ((currentPage - 1) * pageSize) - (pageSize + pageSize);
+        currentPage -= 1;
+        if (previousone > lnklist.size()) {
+            previousone = lnklist.size();
+            return lnklist.subList(previousone, previous);
+        } else throw  new NoPreviousPages();
     }
 
-    public String hasNext() {
+
+    private String hasNext() {
         String str1 = "We have next elements";
         String str = "We dont have next elements";
         if (pageSize < lnklist.size()) {
@@ -49,33 +63,35 @@ public class PageBean {
 
     }
 
+
     public String hasPrevious() {
         String str1 = "We have previous elements";
         String str = "There is no previous elements";
-        if (offset < pageSize) {
+        if (lnklist.size() < pageSize) {
             return str1;
         } else {
             return str;
         }
     }
 
-    public String firstPage() {
-        String PageNumber = null;
-        if(PageNumber == null) {
-            PageNumber = "1";
-        }
-        return PageNumber;
-    }
-    public String lastPage(){
-       String lastPage = String.valueOf(lnklist.subList(0,lnklist.size()/5));
-        return lastPage;
-    }
-    public int getCurrentPageNumber(){
-        int PageNumber = 0;
-
-        if(PageNumber == 0) {
-        }
-        return 0;
+    public List<String> firstPage() {
+        currentPage = 1;
+        return lnklist.subList(0, pageSize);
     }
 
+    public List<String> lastPage() {
+        if (pageSize > lnklist.size()) {
+            return lnklist.subList(0, lnklist.size());
+        }
+        currentPage = lnklist.size() / pageSize;
+        if (lnklist.size() % pageSize == 0) {
+            return lnklist.subList(currentPage * pageSize - pageSize, lnklist.size());
+        } else {
+            return lnklist.subList(currentPage * pageSize, lnklist.size());
+        }
+    }
+
+    public int getCurrentPageNumber() {
+        return 2;
+    }
 }
