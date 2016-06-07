@@ -1,3 +1,5 @@
+package firsttask;
+
 import java.util.*;
 
 /**
@@ -9,19 +11,7 @@ public class PageBean {
     private int pageSize = 0;
     private List<String> lnklist;
 
-//    private List<String> formula() {
-//        List<String> secondlist = new ArrayList<String>();
-//        int next = (currentPage - 1) * pageSize;
-//        int nextone = ((currentPage - 1) * pageSize) + pageSize;
-//        for (int i = next; i < nextone; i++) {
-//            // secondlist.add(lnklist.get(i));
-//        }
-//
-//        int previous = (currentPage - 1) / pageSize;
-//
-//        int previousone = ((currentPage - 1) / pageSize) + pageSize;
-//        return secondlist;
-//    }
+
 
     public PageBean(List<String> lnklist, int pageSize) {
         this.lnklist = lnklist;
@@ -29,26 +19,37 @@ public class PageBean {
 
     }
 
-    public List<String> next() {
+    public List<String> next() throws  NoNextPagesFoundException {
         int next = (currentPage - 1) * pageSize;
         int nextone = ((currentPage - 1) * pageSize) + pageSize;
         currentPage += 1;
         if (nextone > lnklist.size()) {
             nextone = lnklist.size();
         }
+        if (next > nextone) {
+            throw  new NoNextPagesFoundException();
+        }
         return lnklist.subList(next, nextone);
 
     }
 
 
-    public List<String> previous() throws NoPreviousPages {
+    public List<String> previous() throws NoPreviousPagesFoundException {
+
         int previous = (currentPage - 1) * pageSize - pageSize;
         int previousone = ((currentPage - 1) * pageSize) - (pageSize + pageSize);
-        currentPage -= 1;
+        currentPage -=1;
         if (previousone > lnklist.size()) {
             previousone = lnklist.size();
-            return lnklist.subList(previousone, previous);
-        } else throw  new NoPreviousPages();
+
+
+        }
+        if(previousone < -1){
+            throw new NoPreviousPagesFoundException();
+        }
+
+        return lnklist.subList(previousone, previous);
+
     }
 
 
@@ -91,7 +92,8 @@ public class PageBean {
         }
     }
 
-    public int getCurrentPageNumber() {
-        return 2;
+    public void getCurrentPageNumber() {
+
+
     }
 }
