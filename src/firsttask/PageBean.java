@@ -12,14 +12,13 @@ public class PageBean {
     private List<String> lnklist;
 
 
-
     public PageBean(List<String> lnklist, int pageSize) {
         this.lnklist = lnklist;
         this.pageSize = pageSize;
 
     }
 
-    public List<String> next() throws  NoNextPagesFoundException {
+    public List<String> next() throws NoNextPagesFoundException {
         int next = (currentPage - 1) * pageSize;
         int nextone = ((currentPage - 1) * pageSize) + pageSize;
         currentPage += 1;
@@ -27,7 +26,7 @@ public class PageBean {
             nextone = lnklist.size();
         }
         if (next > nextone) {
-            throw  new NoNextPagesFoundException();
+            throw new NoNextPagesFoundException();
         }
         return lnklist.subList(next, nextone);
 
@@ -38,13 +37,13 @@ public class PageBean {
 
         int previous = (currentPage - 1) * pageSize - pageSize;
         int previousone = ((currentPage - 1) * pageSize) - (pageSize + pageSize);
-        currentPage -=1;
+        currentPage -= 1;
         if (previousone > lnklist.size()) {
             previousone = lnklist.size();
 
 
         }
-        if(previousone < -1){
+        if (previousone < -1) {
             throw new NoPreviousPagesFoundException();
         }
 
@@ -53,25 +52,21 @@ public class PageBean {
     }
 
 
-    private String hasNext() {
-        String str1 = "We have next elements";
-        String str = "We dont have next elements";
+    private boolean hasNext() {
         if (pageSize < lnklist.size()) {
-            return str1;
+            return true;
         } else {
-            return str;
+            return false;
         }
 
     }
 
 
-    public String hasPrevious() {
-        String str1 = "We have previous elements";
-        String str = "There is no previous elements";
+    public boolean hasPrevious() {
         if (lnklist.size() < pageSize) {
-            return str1;
+            return true;
         } else {
-            return str;
+            return false;
         }
     }
 
