@@ -8,9 +8,11 @@ import java.util.*;
 public class Demo {
     public static void main(String[] args) {
         Sentence sentence = new Sentence();
-        Map<Character,Integer> frequence = sentence.getCharFreq("aleksandarhristov");
-        Character mostFrequent = sentence.mostFrequent("aleksandarhristov");
-
+        String s = "aleksandarhristov";
+        Map<Character,Integer> frequence = sentence.getCharFreq(s);
+        Character mostFrequent = sentence.mostFrequent(s);
+        System.out.println("frequence of characters" + frequence);
+        System.out.println("most frequent character is : " + mostFrequent);
     }
 
 }
