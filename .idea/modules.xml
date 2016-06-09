@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/collections.iml" filepath="$PROJECT_DIR$/.idea/collections.iml" />
+      <module fileurl="file://$PROJECT_DIR$/pagebean/pagebean.iml" filepath="$PROJECT_DIR$/pagebean/pagebean.iml" />
+      <module fileurl="file://$PROJECT_DIR$/sentence/sentence.iml" filepath="$PROJECT_DIR$/sentence/sentence.iml" />
+      <module fileurl="file://$PROJECT_DIR$/wordprocessor/sentence.iml" filepath="$PROJECT_DIR$/wordprocessor/sentence.iml" />
+    </modules>
+  </component>
+</project>
