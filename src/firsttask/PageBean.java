@@ -71,6 +71,9 @@ public class PageBean {
     }
 
     public List<String> firstPage() {
+        if(pageSize>lnklist.size()){
+            return lnklist.subList(0,lnklist.size());
+        }
         currentPage = 1;
         return lnklist.subList(0, pageSize);
     }
