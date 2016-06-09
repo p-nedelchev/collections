@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
 <<<<<<< HEAD
+<<<<<<< HEAD
   <component name="ProjectRootManager" version="2" assert-keyword="false" jdk-15="false" />
 =======
+=======
+>>>>>>> 78a8e0b24aa4dc25b3c8b576fadb32adc5cc1376
   <component name="EntryPointsManager">
     <entry_points version="2.0" />
   </component>
@@ -17,5 +20,8 @@
     <ConfirmationsSetting value="0" id="Remove" />
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_1_8" default="false" assert-keyword="true" jdk-15="true" project-jdk-name="1.8" project-jdk-type="JavaSDK" />
+<<<<<<< HEAD
 >>>>>>> AlexanderVladimirov9090-sentence2
+=======
+>>>>>>> 78a8e0b24aa4dc25b3c8b576fadb32adc5cc1376
 </project>

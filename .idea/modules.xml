@@ -4,8 +4,11 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/collections.iml" filepath="$PROJECT_DIR$/.idea/collections.iml" />
       <module fileurl="file://$PROJECT_DIR$/pagebean/pagebean.iml" filepath="$PROJECT_DIR$/pagebean/pagebean.iml" />
+<<<<<<< HEAD
       <module fileurl="file://$PROJECT_DIR$/sentence/sentence.iml" filepath="$PROJECT_DIR$/sentence/sentence.iml" />
       <module fileurl="file://$PROJECT_DIR$/wordprocessor/sentence.iml" filepath="$PROJECT_DIR$/wordprocessor/sentence.iml" />
+=======
+>>>>>>> 78a8e0b24aa4dc25b3c8b576fadb32adc5cc1376
     </modules>
   </component>
 </project>

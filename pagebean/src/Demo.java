@@ -19,6 +19,7 @@ public class Demo {
     input.hasNext();
     PageBean pageBean = new PageBean(list, input.nextInt());
     System.out.println("Type hlp for help: ");
+<<<<<<< HEAD
     while (true) {
 
       String executeSymbol = input.nextLine();
@@ -50,5 +51,36 @@ public class Demo {
     }
 
 
+=======
+    while (true){
+
+      String executeSymbol = input.nextLine();
+      if(executeSymbol.equals("hlp")){
+        System.out.println("fst = first page.\nlst = last page.\nnxt = next page.\nprvs = previous page.\n" +
+                "hsnxt = has next page.\nhsprvs = has previous page.\nkll = to exit program.");
+      }
+      if(executeSymbol.equals("fst")){
+        System.out.println(pageBean.firstPage());
+      }
+        if (executeSymbol.equals("lst")){
+          System.out.println(pageBean.lastPage());
+        }
+          if(executeSymbol.equals("nxt")){
+            System.out.println(pageBean.next());
+      }
+      if( executeSymbol.equals("prvs")){
+        System.out.println(pageBean.previous());
+      }
+      if (executeSymbol.equals("hsnxt")){
+        System.out.println(pageBean.hasNext());
+      }
+      if(executeSymbol.equals("hsprvs")){
+        System.out.println(pageBean.hasPrevious());
+      }
+      if(executeSymbol.equals("kll")){
+        break;
+      }
+    }
+>>>>>>> 78a8e0b24aa4dc25b3c8b576fadb32adc5cc1376
   }
 }
