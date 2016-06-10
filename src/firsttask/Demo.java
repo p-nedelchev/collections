@@ -22,6 +22,7 @@ public class Demo {
         lnklist.add("9");
         lnklist.add("10");
         PageBean pageBean = new PageBean(lnklist, 7);
+
         Scanner in = new Scanner(System.in);
         while (true) {
             if (!in.hasNextInt()) {

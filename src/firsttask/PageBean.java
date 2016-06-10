@@ -6,16 +6,14 @@ import java.util.*;
  * Created by clouway on 31.05.16.
  */
 public class PageBean {
-
     private int currentPage = 1;
     private int pageSize = 0;
     private List<String> lnklist;
-
+    private int number;
 
     public PageBean(List<String> lnklist, int pageSize) {
         this.lnklist = lnklist;
         this.pageSize = pageSize;
-
     }
 
     public List<String> next() throws NoNextPagesFoundException {
@@ -32,7 +30,6 @@ public class PageBean {
 
     }
 
-
     public List<String> previous() throws NoPreviousPagesFoundException {
 
         int previous = (currentPage - 1) * pageSize - pageSize;
@@ -40,17 +37,12 @@ public class PageBean {
         currentPage -= 1;
         if (previousone > lnklist.size()) {
             previousone = lnklist.size();
-
-
         }
         if (previousone < -1) {
             throw new NoPreviousPagesFoundException();
         }
-
         return lnklist.subList(previousone, previous);
-
     }
-
 
     private boolean hasNext() {
         if (pageSize < lnklist.size()) {
@@ -58,9 +50,7 @@ public class PageBean {
         } else {
             return false;
         }
-
     }
-
 
     public boolean hasPrevious() {
         if (lnklist.size() < pageSize) {
@@ -71,8 +61,8 @@ public class PageBean {
     }
 
     public List<String> firstPage() {
-        if(pageSize>lnklist.size()){
-            return lnklist.subList(0,lnklist.size());
+        if (pageSize > lnklist.size()) {
+            return lnklist.subList(0, lnklist.size());
         }
         currentPage = 1;
         return lnklist.subList(0, pageSize);
@@ -89,9 +79,8 @@ public class PageBean {
             return lnklist.subList(currentPage * pageSize, lnklist.size());
         }
     }
-
-    public void getCurrentPageNumber() {
-
-
+    public int getCurrentPageNumber() {
+        return currentPage;
     }
+
 }
