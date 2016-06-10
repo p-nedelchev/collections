@@ -9,7 +9,7 @@ public class PageBean {
     private int currentPage = 1;
     private int pageSize = 0;
     private List<String> lnklist;
-    private int number;
+
 
     public PageBean(List<String> lnklist, int pageSize) {
         this.lnklist = lnklist;
