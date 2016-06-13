@@ -1,9 +1,7 @@
 package secondtask;
 
 
-import java.util.Collections;
-import java.util.HashMap;
-import java.util.Map;
+import java.util.*;
 import java.util.concurrent.ConcurrentHashMap;
 
 
@@ -12,10 +10,10 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class Sentence {
 
-    Map.Entry<Character,Integer> entry;
+    Map.Entry<Character, Integer> entry;
 
     public Map<Character, Integer> getCharFreq(String s) {
-         Map<Character, Integer> map = new HashMap<>();
+        Map<Character, Integer> map = new HashMap<>();
         char[] chararray = s.toCharArray();
         for (char i : chararray) {
             map.put(i, map.get(i) == null ? 1 : map.get(i) + 1);
@@ -24,17 +22,31 @@ public class Sentence {
         return map;
     }
 
-    public Character mostFrequent(String s) {
+    public List<Character> maximumOccurringChars(String str) {
         Map<Character, Integer> map = new HashMap<>();
-        int maxValueInTheMap = (Collections.max(map.values()));
-        for (Map.Entry<Character,Integer> entry : map.entrySet())
-            if (entry.getValue() == maxValueInTheMap) {
-                return entry.getKey();
+        List<Character> occurrences = new ArrayList<>();
+        int maxOccurring = 0;
+        for (int i = 0; i < str.length(); i++) {
+            char ch = str.charAt(i);
+            if (map.containsKey(ch)) {
+                map.put(ch, map.get(ch) + 1);
+            } else {
+                map.put(ch, 1);
             }
-    return  entry.getKey();
+
+            if (map.get(ch) > maxOccurring) {
+                maxOccurring = map.get(ch);
+            }
+        }
+        for (Map.Entry<Character, Integer> entry : map.entrySet()) {
+            if (entry.getValue() == maxOccurring) {
+                occurrences.add(entry.getKey());
+            }
+        }
+
+        return occurrences;
     }
 }
-
 
 
 
