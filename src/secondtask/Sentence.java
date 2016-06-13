@@ -10,8 +10,6 @@ import java.util.concurrent.ConcurrentHashMap;
  */
 public class Sentence {
 
-    Map.Entry<Character, Integer> entry;
-
     public Map<Character, Integer> getCharFreq(String s) {
         Map<Character, Integer> map = new HashMap<>();
         char[] chararray = s.toCharArray();
