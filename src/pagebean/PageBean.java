@@ -12,27 +12,29 @@ public class PageBean<T> {
     private int pageSize;
     private List<T> list;
 
+    public int getCurrentPage() {
+        return currentPage;
+    }
+
     public PageBean(List<T> list, int pageSize) {
         this.list = list;
         this.pageSize = pageSize;
     }
 
     public List<T> next() {
-        if (hasNext()){
+        if (hasNext()) {
             currentPage++;
             return getCurrentPageNumber();
-        } else {
-            throw new LastPageException();
         }
+        throw new PageBeanException();
     }
 
     public List<T> previous() {
-        if (hasPrevious()){
+        if (hasPrevious()) {
             currentPage--;
             return getCurrentPageNumber();
-        } else {
-            throw new FirstPageException();
         }
+        throw new PageBeanException();
     }
 
     public List<T> firstPage() {
@@ -41,7 +43,7 @@ public class PageBean<T> {
     }
 
     public List<T> lastPage() {
-        if (list.size() % pageSize == 0){
+        if (list.size() % pageSize == 0) {
             currentPage = list.size() / pageSize - 1;
         } else {
             currentPage = list.size() / pageSize;
@@ -52,23 +54,15 @@ public class PageBean<T> {
     public List<T> getCurrentPageNumber() {
         if (currentPage * pageSize + pageSize > list.size()) {
             return list.subList(currentPage * pageSize, list.size());
-        } else {
-            return list.subList(currentPage * pageSize, currentPage * pageSize + pageSize);
         }
+        return list.subList(currentPage * pageSize, currentPage * pageSize + pageSize);
     }
+
     private boolean hasNext() {
-        if (currentPage * pageSize + pageSize < list.size()){
-            return true;
-        } else {
-            return false;
-        }
+        return (currentPage < pageSize - 1);
     }
 
     private boolean hasPrevious() {
-        if (currentPage > 0){
-            return true;
-        } else {
-            return false;
-        }
+        return (currentPage > 0);
     }
 }

@@ -11,11 +11,6 @@ import java.util.Scanner;
  */
 public class Demo {
     public static void main(String[] args) {
-        String next = "next";
-        String prev = "prev";
-        String first = "first";
-        String last = "last";
-        String curr = "curr";
         List<String> list = new LinkedList<>();
         list.add("First");
         list.add("Second");
@@ -25,24 +20,32 @@ public class Demo {
         list.add("Sixth");
         list.add("Seventh");
         list.add("Eighth");
-        PageBean pb = new PageBean(list,3);
-        while (true){
+        PageBean pb = new PageBean(list, 3);
+        System.out.println("Commands: next, prev, first, last, curr");
+        System.out.println("'next' for the next page.");
+        System.out.println("'prev' for the previous page.");
+        System.out.println("'first' for the first page.");
+        System.out.println("'last' for the last page.");
+        System.out.println("'curr' for the current page number.");
+        while (true) {
             Scanner sc = new Scanner(System.in);
             String s = sc.nextLine();
-            if (s.equals(next)){
-                System.out.println(pb.next());
-            }
-            if (s.equals(prev)){
-                System.out.println(pb.previous());
-            }
-            if (s.equals(first)){
-                System.out.println(pb.firstPage());
-            }
-            if (s.equals(last)){
-                System.out.println(pb.lastPage());
-            }
-            if (s.equals(curr)){
-                System.out.println(pb.getCurrentPageNumber());
+            switch (s.toLowerCase()) {
+                case "first":
+                    System.out.println(pb.firstPage());
+                    break;
+                case "last":
+                    System.out.println(pb.lastPage());
+                    break;
+                case "curr":
+                    System.out.println("You are at page: " + (pb.getCurrentPage() + 1) + " out of 3");
+                    break;
+                case "next":
+                    System.out.println(pb.next());
+                    break;
+                case "prev":
+                    System.out.println(pb.previous());
+                    break;
             }
         }
     }
