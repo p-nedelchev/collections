@@ -11,7 +11,6 @@ public class PageBean<T> {
     private int currentPage = -1;
     private int pageSize;
     private List<T> list;
-    private String noPages = "No more pages left!";
 
     public PageBean(List<T> list, int pageSize) {
         this.list = list;
@@ -19,19 +18,20 @@ public class PageBean<T> {
     }
 
     public List<T> next() {
-        if (hasNext()) {
-            currentPage++;
-            return getPageElements();
+        if (!hasNext()) {
+            throw new PageBeanException("You are at the last last page!");
         }
-        throw new PageBeanException(noPages);
+        currentPage++;
+        return getPageElements();
     }
 
     public List<T> previous() {
-        if (hasPrevious()) {
-            currentPage--;
-            return getPageElements();
+        if (!hasPrevious()) {
+            throw new PageBeanException("You are at the first page!");
         }
-        throw new PageBeanException(noPages);
+        currentPage--;
+        return getPageElements();
+
     }
 
     public List<T> firstPage() {
