@@ -38,13 +38,16 @@ public class Demo {
                     System.out.println(pb.lastPage());
                     break;
                 case "curr":
-                    System.out.println("You are at page: " + (pb.getCurrentPage() + 1) + " out of 3");
+                    System.out.println("You are at page: " + (pb.getCurrentPageNumber() + 1) + " out of 3");
                     break;
                 case "next":
                     System.out.println(pb.next());
                     break;
                 case "prev":
                     System.out.println(pb.previous());
+                    break;
+                default:
+                    System.out.println("Wrong command");
                     break;
             }
         }

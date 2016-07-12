@@ -6,8 +6,8 @@ package pagebean;
  * @author Denis Dimitrov(@denis.k.dimitrov@gmail.com)
  */
 public class PageBeanException extends RuntimeException {
-    public PageBeanException(){
-        super("No more pages left!");
+    public PageBeanException(String message){
+        super(message);
     }
 }
 

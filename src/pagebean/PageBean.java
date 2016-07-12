@@ -11,10 +11,7 @@ public class PageBean<T> {
     private int currentPage = -1;
     private int pageSize;
     private List<T> list;
-
-    public int getCurrentPage() {
-        return currentPage;
-    }
+    private String noPages = "No more pages left!";
 
     public PageBean(List<T> list, int pageSize) {
         this.list = list;
@@ -24,22 +21,22 @@ public class PageBean<T> {
     public List<T> next() {
         if (hasNext()) {
             currentPage++;
-            return getCurrentPageNumber();
+            return getPageElements();
         }
-        throw new PageBeanException();
+        throw new PageBeanException(noPages);
     }
 
     public List<T> previous() {
         if (hasPrevious()) {
             currentPage--;
-            return getCurrentPageNumber();
+            return getPageElements();
         }
-        throw new PageBeanException();
+        throw new PageBeanException(noPages);
     }
 
     public List<T> firstPage() {
         currentPage = 0;
-        return getCurrentPageNumber();
+        return getPageElements();
     }
 
     public List<T> lastPage() {
@@ -48,10 +45,14 @@ public class PageBean<T> {
         } else {
             currentPage = list.size() / pageSize;
         }
-        return getCurrentPageNumber();
+        return getPageElements();
     }
 
-    public List<T> getCurrentPageNumber() {
+    public int getCurrentPageNumber() {
+        return currentPage;
+    }
+
+    private List<T> getPageElements() {
         if (currentPage * pageSize + pageSize > list.size()) {
             return list.subList(currentPage * pageSize, list.size());
         }
