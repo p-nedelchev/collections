@@ -12,7 +12,7 @@ public class Demo {
         System.out.println(String.format("Most frequent char from the text 'Ники Илиев' is: %c ", mostFrequentCharacter));
         System.out.println();
         System.out.println("Each word equals to how many times it is met");
-        System.out.println(frequence.wordFrequence(new String[]{"aa", "cc", "aa", "ff", "gg", "hh", "ff"}));
+        System.out.println(frequence.wordFrequence("aa cc aa ff gg hh ff"));
 
     }
 }

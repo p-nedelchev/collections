@@ -35,9 +35,10 @@ public class Frequence {
         return null;
     }
 
-    public Map<String, Integer> wordFrequence(String[] text) {
+    public Map<String, Integer> wordFrequence(String text) {
+        String[] split = text.split(" ");
         Map<String, Integer> result = new LinkedHashMap<>();
-        for (String each : text) {
+        for (String each : split) {
             result.put(each, result.get(each) == null ? 1 : result.get(each) + 1);
         }
         return result;
