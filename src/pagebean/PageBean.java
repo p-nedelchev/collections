@@ -14,26 +14,41 @@ public class PageBean<T> {
         it = list.listIterator();
     }
 
-    //add new page
+    /**
+     * this method add new page to pagebean
+     * @param element is a page to add
+     */
     public void add(T element) {
         list.add(element);
         size++;
 
     }
-    // return first page
+
+    /**
+     * this method return first page
+     * @return first page
+     */
     public T firstPage() {
         currentPage = 0;
         return list.get(0);
 
     }
 
-    // return last page
+    /**
+     * this method return last page
+     * @return last page
+     */
     public T lastPage() {
         currentPage = list.size() - 1;
         return list.get(list.size() - 1);
 
     }
-    // return next page from pagebean
+
+    /**
+     * this method check for if have next page return the next page
+     * @return next page from pagebean
+     * @throws NoMorePagesException
+     */
     public T next() throws NoMorePagesException {
         if (currentPage < list.size() - 1) {
             currentPage++;
@@ -43,7 +58,11 @@ public class PageBean<T> {
 
     }
 
-    //return previous page from pagebean
+    /**
+     * this method check if have precious page return previous page
+     * @return previous page
+     * @throws NoMorePagesException
+     */
     public T previous() throws NoMorePagesException {
         if (currentPage == 1) {
             currentPage--;
@@ -53,7 +72,10 @@ public class PageBean<T> {
 
     }
 
-    //if pagebean has next page return true else return false
+    /**
+     * this method check if has next page return true else return false
+     * @return false
+     */
     public boolean hasNext() {
         if (currentPage >= -1 && currentPage < list.size() - 1) {
             return true;
@@ -62,7 +84,10 @@ public class PageBean<T> {
         }
     }
 
-    //if pagebean has previous page return true else return false
+    /**
+     * this method check if has previous page return true else return false
+     * @return
+     */
     public boolean hasPrevious() {
         if (currentPage >= 1) {
             return true;
@@ -70,7 +95,10 @@ public class PageBean<T> {
         return false;
     }
 
-    //return current page number
+    /**
+     * this method return current page number
+     * @return current page number
+     */
     public int getCurrentPage() {
 
         return currentPage + 1;

@@ -3,10 +3,9 @@ package pagebean;
 import java.util.Scanner;
 
 public class Demo {
+
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
-
-        //here is created new pagebean and added some pages in.
         PageBean<Page> page = new PageBean<>();
         page.add(new Page("page1", 1));
         page.add(new Page("page2", 2));
@@ -16,7 +15,11 @@ public class Demo {
         System.out.println("Available commands: next, previous, first, last, hasNext, hasPrevious, currentPage!"
                 + "\n" + "Enter command: ");
 
-        // here is the loop when we enter commands it return to us the result.
+        /**
+         * here start the loop when we enter commands to call respectively
+         * methods for command
+         */
+
         while (scan.hasNextLine()) {
             enter = scan.nextLine();
             if (enter.equals(".")) {
