@@ -15,7 +15,12 @@ public class ReadString {
     public Map<Character, Integer> charFreq() {
         Map<Character, Integer> map = new HashMap<>();
         for (Character each : string.toCharArray()) {
-            map.put(each, map.get(each) == null ? 1 : map.get(each) + 1);
+            if (map.containsKey(each)) {
+                Integer newValue = map.get(each) + 1;
+                map.put(each, newValue);
+                continue;
+            }
+            map.put(each,1);
         }
         return map;
     }
@@ -25,7 +30,7 @@ public class ReadString {
         Integer mostfreq = Collections.max(freq.values());
         for (Character each : freq.keySet()) {
             if (freq.get(each).equals(mostfreq)) {
-            return each;
+                return each;
             }
         }
         return null;
