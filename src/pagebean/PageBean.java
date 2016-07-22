@@ -60,6 +60,7 @@ public class PageBean<T> {
         if (list.size() > index) {
             next = callNextPage();
         } else
+
             throw new NoMorePagesException("No more pages!");
 
         return next;
