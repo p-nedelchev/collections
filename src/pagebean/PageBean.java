@@ -19,16 +19,17 @@ public class PageBean<T> {
         list.add(element);
 
     }
+
     private List<T> callNextPage() {
         List<T> next;
         index = currentPage * pageSize;
         if (list.size() - index > pageSize) {
             next = list.subList(index, index + pageSize);
             currentPage += 1;
-        } else {
-            next = lastPage();
-            index = list.size() + 1;
         }
+        next = lastPage();
+        index = list.size() + 1;
+
         return next;
     }
 
@@ -43,11 +44,11 @@ public class PageBean<T> {
             index = list.size() - pageSize;
             currentPage = list.size() / pageSize;
             return list.subList(index, list.size());
-        } else {
-            index = (list.size() / pageSize) * pageSize;
-            currentPage = list.size() - pageSize + 1;
-            return list.subList(index, list.size());
         }
+        index = (list.size() / pageSize) * pageSize;
+        currentPage = list.size() - pageSize + 1;
+        return list.subList(index, list.size());
+
 
     }
 
@@ -55,13 +56,12 @@ public class PageBean<T> {
         List<T> next;
         if (currentPage == 0) {
             next = firstPage();
-        } else {
-            if (list.size() > index) {
-                next = callNextPage();
-            } else {
-                throw new NoMorePagesException("No more pages!");
-            }
         }
+        if (list.size() > index) {
+            next = callNextPage();
+        } else
+            throw new NoMorePagesException("No more pages!");
+
         return next;
     }
 
@@ -71,9 +71,9 @@ public class PageBean<T> {
             index -= pageSize * 2;
             currentPage -= 2;
             previous = callNextPage();
-        } else {
+        } else
             throw new NoMorePagesException("No more pages!");
-        }
+
         return previous;
     }
 
