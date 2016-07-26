@@ -9,7 +9,7 @@ import java.util.Scanner;
 public class Demo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<String> list = new ArrayList<String>();
+        ArrayList<String> list = new ArrayList<>();
         list.add("5");
         list.add("4");
         list.add("2");
