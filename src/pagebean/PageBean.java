@@ -7,12 +7,12 @@ import java.util.List;
  * @author Petar Nedelchev <peter.krasimirov@gmail.com>
  */
 public class PageBean {
-    private ArrayList<String> arlist;
+    private List<String> list;
     private int pageSize;
     private int currentPage = 0;
 
     public PageBean (List<String> list, int size) {
-        arlist = new ArrayList<>(list);
+        this.list = new ArrayList<>(list);
         pageSize = size;
     }
 
@@ -22,7 +22,7 @@ public class PageBean {
      */
     public List<String> next () {
         currentPage ++;
-        if (currentPage*pageSize > arlist.size()) {
+        if (currentPage*pageSize > list.size()) {
             return lastPage();
         }
         return getCurrentPage();
@@ -46,7 +46,7 @@ public class PageBean {
      * @return boolean true if exists otherwise fault
      */
     public boolean hasNext () {
-        return !arlist.subList(currentPage*pageSize, (currentPage + 1)*pageSize).isEmpty();
+        return !list.subList(currentPage*pageSize, (currentPage + 1)*pageSize).isEmpty();
     }
 
     /**
@@ -54,7 +54,7 @@ public class PageBean {
      * @return boolean true if exists otherwise fault
      */
     public boolean hasPrevious () {
-        return !arlist.subList((currentPage - 2)*pageSize,(currentPage - 1)*pageSize).isEmpty();
+        return !list.subList((currentPage - 2)*pageSize,(currentPage - 1)*pageSize).isEmpty();
     }
 
     /**
@@ -62,7 +62,7 @@ public class PageBean {
      * @return List a list containing the first page
      */
     public List<String> firstPage () {
-        return this.arlist.subList( 0, pageSize );
+        return this.list.subList( 0, pageSize );
     }
 
     /**
@@ -70,7 +70,7 @@ public class PageBean {
      * @return List a list containing the last page
      */
     public List<String> lastPage () {
-        return this.arlist.subList(pageSize*(this.arlist.size()/pageSize), arlist.size());
+        return this.list.subList(pageSize*(this.list.size()/pageSize), list.size());
     }
 
     /**
@@ -86,6 +86,6 @@ public class PageBean {
      * @return List a list containing the current page
      */
     public List<String> getCurrentPage () {
-        return this.arlist.subList((currentPage - 1)*pageSize, currentPage*pageSize);
+        return this.list.subList((currentPage - 1)*pageSize, currentPage*pageSize);
     }
 }

@@ -15,7 +15,11 @@ public class FrequenciesCounter {
      */
     public Map<String, Integer> countWords (String text) {
         Map<String, Integer> frequencies = new LinkedHashMap<>();
-        Arrays.stream(text.split(" ")).forEach(e -> frequencies.put(e, Collections.frequency(Arrays.asList(text.split(" ")),e)));
+        String [] words = text.split(" ");
+        for (String word : words) {
+            int wordFrequency = Collections.frequency(Arrays.asList(words), word);
+            frequencies.put(word , wordFrequency);
+        }
         return frequencies;
     }
 
@@ -26,7 +30,11 @@ public class FrequenciesCounter {
      */
     public String countCharacters (String text) {
         Map<String, Integer> frequencies = new LinkedHashMap<>();
-        Arrays.stream(text.replaceAll("\\s","").split("")).forEach(e -> frequencies.put(e, Collections.frequency(Arrays.asList(text.split("")),e)));
+        String [] characters = text.replaceAll("\\s", "").split("");
+        for (String character : characters) {
+            int charFrequency = Collections.frequency(Arrays.asList(characters), character);
+            frequencies.put(character, charFrequency);
+        }
         int max = Collections.max(frequencies.values());
         for (String key : frequencies.keySet()) {
             if (frequencies.get(key) == max) return key;
