@@ -2,6 +2,7 @@ package pagebean;
 
 import java.util.ArrayList;
 import java.util.Scanner;
+import com.google.common.collect.Lists;
 
 /**
  * @author Petar Nedelchev <peter.krasimirov@gmail.com>
@@ -9,18 +10,8 @@ import java.util.Scanner;
 public class Demo {
     public static void main(String[] args) {
         Scanner scanner = new Scanner(System.in);
-        ArrayList<String> list = new ArrayList<>();
-        list.add("5");
-        list.add("4");
-        list.add("2");
-        list.add("52");
-        list.add("12");
-        list.add("6");
-        list.add("89");
-        list.add("32");
-        list.add("65");
-        list.add("16");
-        list.add("9");
+        ArrayList<String> list;
+        list = Lists.newArrayList("5","13","51","8","34","15","14","98","10","26");
         PageBean pageBean = new PageBean(list, 3);
         while (true){
             String command = scanner.nextLine();

@@ -5,7 +5,7 @@ package pagebean;
  */
 public class PageNotFoundException extends RuntimeException {
 
-    private static String message = "This is the first page. No previous page found";
+    private static String message = "Page not found";
 
     public PageNotFoundException () {
         super(message);
